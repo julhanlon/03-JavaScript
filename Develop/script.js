@@ -1,5 +1,44 @@
-// Assignment Code
+// prompts for password length and confirms for types of characters to include
+var length = prompt("Enter character length for password, number from 8-128");
+var lower = confirm("Include lowercase letters??");
+var upper = confirm("Include upper case letters?");
+var numbers = confirm("Include numbers?");
+var symbols = confirm("Include symbols");
+
+//checks to see if the prompts are working
+console.log(length);
+console.log(lower);
+console.log(upper);
+console.log(numbers);
+console.log(symbols);
+
 var generateBtn = document.querySelector("#generate");
+
+function generatePassword() {
+  //evaluate character type
+  var charSet = "";
+  if (lower) {
+    charSet += "abcdefghijklmnopqrstuvwxyz";
+  }
+  if (upper) {
+    charSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  }
+  if (numbers) {
+    charSet += "0123456789";
+  }
+  if (symbols) {
+    charSet += " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+  }
+  //return value
+  var returnVal = "";
+  // for (var i = 0, n = charSet.length; i < length; i++) {
+  for (var i = 0, n = charSet.length; i < length; i++) {
+    //picks a character within charSet at index of random number
+    returnVal += charSet.charAt(Math.floor(Math.random() * n));
+  }
+  console.log(returnVal);
+  return returnVal;
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -11,21 +50,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-var length = prompt("Enter a password length from ");
-
-function getRandomLower() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
-
-function getRandomUpper() {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-
-function getRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
-
-function getRandomSymbol() {
-  const symbols = "!@#$%^&*(){}[]=<>/,.";
-  return symbols[Math.floor(Math.random() * symbols.length)];
-}
