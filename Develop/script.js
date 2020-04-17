@@ -1,5 +1,9 @@
 // prompts for password length and confirms for types of characters to include
 var length = prompt("Enter character length for password, number from 8-128");
+if (length < 8) {
+  alert("Password is not long enough!");
+  var length = prompt("Enter character length for password, number from 8-128");
+}
 var lower = confirm("Include lowercase letters??");
 var upper = confirm("Include upper case letters?");
 var numbers = confirm("Include numbers?");
@@ -15,7 +19,7 @@ console.log(symbols);
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  //evaluate character type
+  //evaluates the different character types and runs them if they were confirmed true
   var charSet = "";
   if (lower) {
     charSet += "abcdefghijklmnopqrstuvwxyz";
@@ -31,7 +35,7 @@ function generatePassword() {
   }
   //return value
   var returnVal = "";
-  // for (var i = 0, n = charSet.length; i < length; i++) {
+  // takes the password length and runs it through a for loop
   for (var i = 0, n = charSet.length; i < length; i++) {
     //picks a character within charSet at index of random number
     returnVal += charSet.charAt(Math.floor(Math.random() * n));
