@@ -47,6 +47,7 @@ header {
 .card-header::after {
   content: " ";
   display: block;
+  justify-content: center;
   width: 100%;
   background: aliceblue;
   height: 2px;

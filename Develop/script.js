@@ -1,6 +1,6 @@
 // prompts for password length and confirms for types of characters to include
 var length = prompt("Enter character length for password, number from 8-128");
-if (length < 8) {
+if (length < 8 || length > 128) {
   alert("Password is not long enough!");
   var length = prompt("Enter character length for password, number from 8-128");
 }
